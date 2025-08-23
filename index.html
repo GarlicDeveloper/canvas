@@ -1,58 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Introduction - Vikrant Talbhoge</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 20px;
-      padding: 0;
-      text-align: center;
+      margin: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    .canva-embed {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: 20px auto;
-      height: 0;
-      padding-top: 56.25%;
-      box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .canva-embed iframe {
+    iframe {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       top: 0;
       left: 0;
       border: none;
     }
-    a {
-      display: inline-block;
-      margin-top: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #1a73e8;
+    .fullscreen-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 10;
+      transition: opacity 0.3s;
     }
-    a:hover {
+    .fullscreen-btn:hover {
+      background: rgba(0,0,0,0.8);
+    }
+    .credit {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      font-size: 12px;
+      color: #fff;
+      opacity: 0.7;
+    }
+    .credit a {
+      color: #4da6ff;
+      text-decoration: none;
+    }
+    .credit a:hover {
       text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h1>Introduction</h1>
+  <!-- Canva Embed -->
+  <iframe id="canvaEmbed" 
+    src="https://www.canva.com/design/DAGwxj6onao/owQ2fySgwIq4pPTNtqeTlg/view?embed"
+    allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
 
-  <div class="canva-embed">
-    <iframe loading="lazy" src="https://www.canva.com/design/DAGwxj6onao/owQ2fySgwIq4pPTNtqeTlg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+  <!-- Fullscreen Button -->
+  <button class="fullscreen-btn" onclick="goFullscreen()">⛶ Fullscreen</button>
+
+  <!-- Credit -->
+  <div class="credit">
+    <a href="https://www.canva.com/design/DAGwxj6onao/owQ2fySgwIq4pPTNtqeTlg/view?utm_content=DAGwxj6onao&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">
+      Introduction
+    </a> by Vikrant Talbhoge
   </div>
 
-  <a href="https://www.canva.com/design/DAGwxj6onao/owQ2fySgwIq4pPTNtqeTlg/view?utm_content=DAGwxj6onao&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">
-    View Full Design
-  </a>
-  <p>by Vikrant Talbhoge</p>
+  <script>
+    function goFullscreen() {
+      const iframe = document.getElementById("canvaEmbed");
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+    }
+  </script>
 </body>
 </html>
